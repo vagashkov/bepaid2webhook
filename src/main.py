@@ -13,4 +13,4 @@ def process_message(payload: dict):
     answer["code"] = 0
     answer["uid"] = payload.get("uid")
     answer["amount"] = payload.get("amount")
-    print(answer)
+    return answer
