@@ -9,6 +9,7 @@ def read_root():
 
 @app.post("/confirm")
 def confirt_payment(payload: dict):
+    print(payload)
     answer = dict()
     answer["code"] = 0
     answer["uid"] = payload.get("uid")
@@ -18,6 +19,7 @@ def confirt_payment(payload: dict):
 
 @app.post("/decline")
 def decline_payment(payload: dict):
+    print(payload)
     answer = dict()
     answer["code"] = -1
     answer["uid"] = payload.get("uid")
