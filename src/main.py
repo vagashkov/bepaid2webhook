@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 
 app = FastAPI()
 
@@ -6,6 +6,18 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+@app.post("/get-address")
+async def get_address(request: Request):
+    print(request.client)
+
+    request_body = await request.json()
+
+    answer = dict()
+    answer["code"] = 0
+    answer["uid"] = request_body.get("uid")
+    answer["amount"] = request_body.get("amount")
+    print(answer)
+    return answer
 
 @app.post("/confirm")
 def confirt_payment(payload: dict):
